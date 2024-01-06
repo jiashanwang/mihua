@@ -11,9 +11,7 @@ class PayOrder
     public function encodeRequestData($paramsData)
     {
         $privateKey = $paramsData["privateKey"];
-        $publicKey = $paramsData["publicKey"];
         $data = $paramsData["data"];
-
         $data['sign'] = $this->getSign($data, $privateKey);
         $encode_data = $this->encryptData($data, $privateKey);
         echo "加密数据=".$encode_data;
@@ -63,7 +61,6 @@ class PayOrder
     {
         ksort($params);
         $privateWorker = new KeyWorker($privateKey ,1);
-//        $privateWorker = new data\KeyWorker($privateKey ,core\KeyFormat::ASN);
         $data = $privateWorker->encrypt(json_encode($params));
         return $data;
     }
@@ -71,7 +68,6 @@ class PayOrder
     public function decryptData($params,$publicKey)
     {
         $publicWorker = new KeyWorker($publicKey ,1);
-//        $publicWorker = new data\KeyWorker($publicKey ,core\KeyFormat::ASN);
         $data = $publicWorker->decrypt($params);
         return $data;
     }
