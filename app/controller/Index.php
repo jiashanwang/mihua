@@ -6,6 +6,10 @@ use app\mih\PayOrder;
 
 class Index extends BaseController
 {
+    public function index()
+    {
+        return "thinkphp6";
+    }
     public function encodeRequestData()
     {
         $paramsData =$this->request->post();
