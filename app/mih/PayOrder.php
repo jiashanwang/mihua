@@ -14,7 +14,7 @@ class PayOrder
         $data = $paramsData["data"];
         $data['sign'] = $this->getSign($data, $privateKey);
         $encode_data = $this->encryptData($data, $privateKey);
-        echo "加密数据=".$encode_data;
+//        echo "加密数据=".$encode_data;
         return $encode_data;
     }
     public function decodeResponseData($paramsData)
